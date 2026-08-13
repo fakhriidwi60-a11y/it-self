@@ -42,7 +42,7 @@ class AuthController extends Controller
             return back()->with('error', 'Password salah!')->withInput();
         }
 
-        Auth::login($user);
+        Auth::login($user, (bool) $request->boolean('remember'));
         $request->session()->regenerate();
 
         return $this->redirectByRole();
