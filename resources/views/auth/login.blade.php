@@ -20,20 +20,29 @@
             --border: #E1E9F2;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background: #eef3fb; min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+        body {
+            background: #eef3fb;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
         .auth-wrapper {
             display: flex;
             width: 100%;
-            max-width: 960px;
-            min-height: 600px;
+            max-width: 1020px;
+            min-height: 620px;
             background: #fff;
-            border-radius: 24px;
+            border-radius: 28px;
             overflow: hidden;
-            box-shadow: 0 24px 70px rgba(12, 44, 108, 0.18);
+            box-shadow: 0 28px 80px rgba(12, 44, 108, 0.18);
         }
         .auth-brand {
-            flex: 1;
-            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            flex: 1.05;
+            background: linear-gradient(-45deg, #0C2C6C, #1E4FA3, #0f5c9e, #0C2C6C);
+            background-size: 300% 300%;
+            animation: gradientMove 12s ease infinite;
             color: #fff;
             display: flex;
             flex-direction: column;
@@ -44,39 +53,56 @@
             position: relative;
             overflow: hidden;
         }
-        .auth-brand::before {
-            content: '';
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        .auth-brand .shape {
             position: absolute;
-            width: 300px;
-            height: 300px;
+            border-radius: 50%;
             background: rgba(79, 195, 247, 0.12);
-            border-radius: 50%;
-            top: -80px;
-            right: -80px;
+            filter: blur(2px);
         }
-        .auth-brand::after {
-            content: '';
-            position: absolute;
-            width: 200px;
-            height: 200px;
-            background: rgba(79, 195, 247, 0.08);
-            border-radius: 50%;
-            bottom: -60px;
-            left: -60px;
+        .shape-1 { width: 340px; height: 340px; top: -90px; right: -110px; }
+        .shape-2 { width: 220px; height: 220px; bottom: -60px; left: -80px; }
+        .shape-3 { width: 140px; height: 140px; bottom: 130px; right: 60px; background: rgba(255,255,255,0.06); }
+        .brand-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 28px;
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 54px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255,255,255,0.18);
+            position: relative;
+            z-index: 1;
         }
-        .auth-brand img { width: 90px; margin-bottom: 24px; border-radius: 50%; border: 4px solid rgba(255,255,255,0.15); }
-        .auth-brand h2 { font-size: 28px; font-weight: 700; margin-bottom: 12px; }
-        .auth-brand p { font-size: 14px; opacity: 0.85; max-width: 320px; line-height: 1.6; }
-        .auth-form { flex: 1; padding: 60px 50px; display: flex; flex-direction: column; justify-content: center; }
-        .auth-form-header { margin-bottom: 32px; }
-        .auth-form-header h1 { font-size: 26px; color: var(--primary-dark); font-weight: 700; margin-bottom: 8px; }
-        .auth-form-header p { color: var(--gray); font-size: 14px; }
-        .form-group { margin-bottom: 20px; }
+        .brand-logo { margin-bottom: 24px; position: relative; z-index: 1; }
+        .brand-logo img { width: 100px; border-radius: 50%; border: 4px solid rgba(255,255,255,0.15); }
+        .auth-brand h2 { font-size: 30px; font-weight: 700; margin-bottom: 14px; position: relative; z-index: 1; }
+        .auth-brand p { font-size: 15px; opacity: 0.88; max-width: 340px; line-height: 1.7; position: relative; z-index: 1; }
+        .auth-form {
+            flex: 1;
+            padding: 60px 55px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background: #fff;
+        }
+        .auth-form-header { margin-bottom: 34px; }
+        .auth-form-header h1 { font-size: 28px; color: var(--primary-dark); font-weight: 700; margin-bottom: 10px; }
+        .auth-form-header p { color: var(--gray); font-size: 15px; }
+        .form-group { margin-bottom: 22px; }
         .form-group label { display: block; color: #333; font-weight: 500; margin-bottom: 8px; font-size: 14px; }
         .input-wrap { position: relative; }
-        .input-wrap i:first-child {
+        .input-wrap .input-icon {
             position: absolute;
-            left: 15px;
+            left: 16px;
             top: 50%;
             transform: translateY(-50%);
             color: var(--gray);
@@ -84,12 +110,13 @@
         }
         .form-group input {
             width: 100%;
-            padding: 13px 15px 13px 44px;
+            padding: 14px 16px 14px 48px;
             border: 2px solid var(--border);
-            border-radius: 12px;
+            border-radius: 14px;
             font-size: 14px;
             transition: border-color 0.25s, box-shadow 0.25s;
             color: #333;
+            background: #fff;
         }
         .form-group input:focus {
             outline: none;
@@ -99,7 +126,7 @@
         .form-group input::placeholder { color: #aaa; }
         .toggle-password {
             position: absolute;
-            right: 15px;
+            right: 16px;
             top: 50%;
             transform: translateY(-50%);
             color: var(--gray);
@@ -108,13 +135,14 @@
             background: none;
             border: none;
             padding: 0;
+            transition: color 0.2s;
         }
         .toggle-password:hover { color: var(--primary); }
         .form-extras {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            margin-bottom: 24px;
+            margin-bottom: 26px;
             font-size: 13px;
         }
         .remember {
@@ -124,21 +152,22 @@
             color: #333;
             cursor: pointer;
             user-select: none;
+            font-size: 13px;
         }
         .remember input { accent-color: var(--primary); width: 16px; height: 16px; cursor: pointer; }
         .btn-login {
             width: 100%;
-            padding: 14px;
+            padding: 15px;
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             color: white;
             border: none;
-            border-radius: 12px;
+            border-radius: 14px;
             font-size: 16px;
             font-weight: 600;
             cursor: pointer;
             transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
         }
-        .btn-login:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(30, 79, 163, 0.32); }
+        .btn-login:hover { transform: translateY(-2px); box-shadow: 0 14px 28px rgba(30, 79, 163, 0.32); }
         .btn-login:active { transform: translateY(0); }
         .register-link { text-align: center; margin-top: 28px; font-size: 14px; color: var(--gray); }
         .register-link a { color: var(--primary); text-decoration: none; font-weight: 600; }
@@ -154,7 +183,13 @@
         }
         .alert-error { background: #FDE9EC; color: var(--danger); border: 1px solid var(--danger); }
         .alert-success { background: #E6F7F2; color: var(--success); border: 1px solid var(--success); }
-        @media (max-width: 860px) {
+        .field-error {
+            color: var(--danger);
+            font-size: 12px;
+            margin-top: 6px;
+            display: block;
+        }
+        @media (max-width: 900px) {
             .auth-brand { display: none; }
             .auth-form { padding: 45px 30px; }
             .auth-wrapper { min-height: auto; }
@@ -164,9 +199,17 @@
 <body>
     <div class="auth-wrapper">
         <div class="auth-brand">
-            <img src="{{ asset('assets/img/logo.webp') }}" alt="Logo IT Self Service Portal">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="brand-logo">
+                <img src="{{ asset('assets/img/logo.webp') }}" alt="Logo IT Self Service Portal">
+            </div>
+            <div class="brand-icon">
+                <i class="fas fa-headset"></i>
+            </div>
             <h2>IT Self Service Portal</h2>
-            <p>Solusi cepat untuk layanan dan permasalahan IT Anda. Masuk untuk mengakses dashboard dan fitur lainnya.</p>
+            <p>Solusi cepat untuk layanan dan permasalahan IT. Masuk untuk mengakses dashboard dan fitur lainnya kapan saja.</p>
         </div>
 
         <div class="auth-form">
@@ -193,24 +236,24 @@
                 <div class="form-group">
                     <label for="email">Email</label>
                     <div class="input-wrap">
-                        <i class="fas fa-envelope"></i>
+                        <i class="fas fa-envelope input-icon"></i>
                         <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="Masukkan email Anda" required autofocus>
                     </div>
                     @error('email')
-                        <small style="color: var(--danger); font-size: 12px; margin-top: 6px; display: block;">{{ $message }}</small>
+                        <small class="field-error">{{ $message }}</small>
                     @enderror
                 </div>
                 <div class="form-group">
                     <label for="password">Password</label>
                     <div class="input-wrap">
-                        <i class="fas fa-lock"></i>
+                        <i class="fas fa-lock input-icon"></i>
                         <input type="password" id="password" name="password" placeholder="Masukkan password Anda" required>
                         <button type="button" class="toggle-password" aria-label="Tampilkan password">
                             <i class="fas fa-eye" id="toggleIcon"></i>
                         </button>
                     </div>
                     @error('password')
-                        <small style="color: var(--danger); font-size: 12px; margin-top: 6px; display: block;">{{ $message }}</small>
+                        <small class="field-error">{{ $message }}</small>
                     @enderror
                 </div>
 
