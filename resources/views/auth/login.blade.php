@@ -21,86 +21,78 @@
         }
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         body {
-            background: #eef3fb;
+            background: linear-gradient(-45deg, #0C2C6C, #1E4FA3, #2b7ec9, #0C2C6C);
+            background-size: 400% 400%;
+            animation: gradientMove 16s ease infinite;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
-        }
-        .auth-wrapper {
-            display: flex;
-            width: 100%;
-            max-width: 1020px;
-            min-height: 620px;
-            background: #fff;
-            border-radius: 28px;
-            overflow: hidden;
-            box-shadow: 0 28px 80px rgba(12, 44, 108, 0.18);
-        }
-        .auth-brand {
-            flex: 1.05;
-            background: linear-gradient(-45deg, #0C2C6C, #1E4FA3, #0f5c9e, #0C2C6C);
-            background-size: 300% 300%;
-            animation: gradientMove 12s ease infinite;
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 50px;
-            text-align: center;
             position: relative;
-            overflow: hidden;
+            overflow-x: hidden;
         }
         @keyframes gradientMove {
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
-        .auth-brand .shape {
+        .shape {
             position: absolute;
             border-radius: 50%;
-            background: rgba(79, 195, 247, 0.12);
-            filter: blur(2px);
+            background: rgba(255, 255, 255, 0.08);
+            filter: blur(1px);
         }
-        .shape-1 { width: 340px; height: 340px; top: -90px; right: -110px; }
-        .shape-2 { width: 220px; height: 220px; bottom: -60px; left: -80px; }
-        .shape-3 { width: 140px; height: 140px; bottom: 130px; right: 60px; background: rgba(255,255,255,0.06); }
-        .brand-icon {
-            width: 120px;
-            height: 120px;
-            border-radius: 28px;
-            background: rgba(255,255,255,0.12);
-            backdrop-filter: blur(8px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 54px;
-            margin-bottom: 30px;
-            border: 1px solid rgba(255,255,255,0.18);
+        .shape-1 { width: 280px; height: 280px; top: -60px; left: -60px; }
+        .shape-2 { width: 360px; height: 360px; bottom: -100px; right: -100px; background: rgba(79, 195, 247, 0.12); }
+        .shape-3 { width: 160px; height: 160px; top: 15%; right: 12%; }
+        .login-card {
+            background: #fff;
+            width: 100%;
+            max-width: 440px;
+            padding: 48px 40px;
+            border-radius: 26px;
+            box-shadow: 0 24px 70px rgba(12, 44, 108, 0.28);
             position: relative;
             z-index: 1;
+            animation: slideUp 0.6s ease-out;
         }
-        .brand-logo { margin-bottom: 24px; position: relative; z-index: 1; }
-        .brand-logo img { width: 100px; border-radius: 50%; border: 4px solid rgba(255,255,255,0.15); }
-        .auth-brand h2 { font-size: 30px; font-weight: 700; margin-bottom: 14px; position: relative; z-index: 1; }
-        .auth-brand p { font-size: 15px; opacity: 0.88; max-width: 340px; line-height: 1.7; position: relative; z-index: 1; }
-        .auth-form {
-            flex: 1;
-            padding: 60px 55px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            background: #fff;
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-        .auth-form-header { margin-bottom: 34px; }
-        .auth-form-header h1 { font-size: 28px; color: var(--primary-dark); font-weight: 700; margin-bottom: 10px; }
-        .auth-form-header p { color: var(--gray); font-size: 15px; }
-        .form-group { margin-bottom: 22px; }
-        .form-group label { display: block; color: #333; font-weight: 500; margin-bottom: 8px; font-size: 14px; }
+        .brand {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+        .brand img {
+            width: 86px;
+            height: 86px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin-bottom: 18px;
+            box-shadow: 0 8px 24px rgba(30, 79, 163, 0.2);
+        }
+        .brand h1 {
+            font-size: 24px;
+            color: var(--primary-dark);
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .brand p {
+            font-size: 14px;
+            color: var(--gray);
+        }
+        .form-group { margin-bottom: 20px; }
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
         .input-wrap { position: relative; }
-        .input-wrap .input-icon {
+        .input-icon {
             position: absolute;
             left: 16px;
             top: 50%;
@@ -114,8 +106,8 @@
             border: 2px solid var(--border);
             border-radius: 14px;
             font-size: 14px;
-            transition: border-color 0.25s, box-shadow 0.25s;
             color: #333;
+            transition: border-color 0.25s, box-shadow 0.25s;
             background: #fff;
         }
         .form-group input:focus {
@@ -123,7 +115,7 @@
             border-color: var(--primary);
             box-shadow: 0 0 0 4px rgba(30, 79, 163, 0.08);
         }
-        .form-group input::placeholder { color: #aaa; }
+        .form-group input::placeholder { color: #b0b7c0; }
         .toggle-password {
             position: absolute;
             right: 16px;
@@ -152,14 +144,18 @@
             color: #333;
             cursor: pointer;
             user-select: none;
-            font-size: 13px;
         }
-        .remember input { accent-color: var(--primary); width: 16px; height: 16px; cursor: pointer; }
+        .remember input {
+            accent-color: var(--primary);
+            width: 16px;
+            height: 16px;
+            cursor: pointer;
+        }
         .btn-login {
             width: 100%;
             padding: 15px;
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-            color: white;
+            color: #fff;
             border: none;
             border-radius: 14px;
             font-size: 16px;
@@ -169,13 +165,18 @@
         }
         .btn-login:hover { transform: translateY(-2px); box-shadow: 0 14px 28px rgba(30, 79, 163, 0.32); }
         .btn-login:active { transform: translateY(0); }
-        .register-link { text-align: center; margin-top: 28px; font-size: 14px; color: var(--gray); }
+        .register-link {
+            text-align: center;
+            margin-top: 26px;
+            font-size: 14px;
+            color: var(--gray);
+        }
         .register-link a { color: var(--primary); text-decoration: none; font-weight: 600; }
         .register-link a:hover { text-decoration: underline; }
         .alert {
             padding: 13px 16px;
             border-radius: 12px;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             font-size: 14px;
             display: flex;
             align-items: center;
@@ -189,87 +190,75 @@
             margin-top: 6px;
             display: block;
         }
-        @media (max-width: 900px) {
-            .auth-brand { display: none; }
-            .auth-form { padding: 45px 30px; }
-            .auth-wrapper { min-height: auto; }
+        @media (max-width: 480px) {
+            .login-card { padding: 38px 24px; border-radius: 22px; }
+            .brand h1 { font-size: 22px; }
         }
     </style>
 </head>
 <body>
-    <div class="auth-wrapper">
-        <div class="auth-brand">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
-            <div class="brand-logo">
-                <img src="{{ asset('assets/img/logo.webp') }}" alt="Logo IT Self Service Portal">
-            </div>
-            <div class="brand-icon">
-                <i class="fas fa-headset"></i>
-            </div>
-            <h2>IT Self Service Portal</h2>
-            <p>Solusi cepat untuk layanan dan permasalahan IT. Masuk untuk mengakses dashboard dan fitur lainnya kapan saja.</p>
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+
+    <div class="login-card">
+        <div class="brand">
+            <img src="{{ asset('assets/img/logo.webp') }}" alt="Logo IT Self Service Portal">
+            <h1>IT Self Service Portal</h1>
+            <p>Masuk untuk melanjutkan</p>
         </div>
 
-        <div class="auth-form">
-            <div class="auth-form-header">
-                <h1>Selamat datang kembali</h1>
-                <p>Masukkan kredensial Anda untuk melanjutkan</p>
+        @if (session('error'))
+            <div class="alert alert-error">
+                <i class="fas fa-circle-exclamation"></i>
+                {{ session('error') }}
+            </div>
+        @endif
+        @if (session('success'))
+            <div class="alert alert-success">
+                <i class="fas fa-circle-check"></i>
+                {{ session('success') }}
+            </div>
+        @endif
+
+        <form method="POST" action="{{ route('login') }}" novalidate>
+            @csrf
+            <div class="form-group">
+                <label for="email">Email</label>
+                <div class="input-wrap">
+                    <i class="fas fa-envelope input-icon"></i>
+                    <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="Masukkan email Anda" required autofocus>
+                </div>
+                @error('email')
+                    <small class="field-error">{{ $message }}</small>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <div class="input-wrap">
+                    <i class="fas fa-lock input-icon"></i>
+                    <input type="password" id="password" name="password" placeholder="Masukkan password Anda" required>
+                    <button type="button" class="toggle-password" aria-label="Tampilkan password">
+                        <i class="fas fa-eye" id="toggleIcon"></i>
+                    </button>
+                </div>
+                @error('password')
+                    <small class="field-error">{{ $message }}</small>
+                @enderror
             </div>
 
-            @if (session('error'))
-                <div class="alert alert-error">
-                    <i class="fas fa-circle-exclamation"></i>
-                    {{ session('error') }}
-                </div>
-            @endif
-            @if (session('success'))
-                <div class="alert alert-success">
-                    <i class="fas fa-circle-check"></i>
-                    {{ session('success') }}
-                </div>
-            @endif
-
-            <form method="POST" action="{{ route('login') }}" novalidate>
-                @csrf
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <div class="input-wrap">
-                        <i class="fas fa-envelope input-icon"></i>
-                        <input type="email" id="email" name="email" value="{{ old('email') }}" placeholder="Masukkan email Anda" required autofocus>
-                    </div>
-                    @error('email')
-                        <small class="field-error">{{ $message }}</small>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <div class="input-wrap">
-                        <i class="fas fa-lock input-icon"></i>
-                        <input type="password" id="password" name="password" placeholder="Masukkan password Anda" required>
-                        <button type="button" class="toggle-password" aria-label="Tampilkan password">
-                            <i class="fas fa-eye" id="toggleIcon"></i>
-                        </button>
-                    </div>
-                    @error('password')
-                        <small class="field-error">{{ $message }}</small>
-                    @enderror
-                </div>
-
-                <div class="form-extras">
-                    <label class="remember">
-                        <input type="checkbox" name="remember" value="1" {{ old('remember') ? 'checked' : '' }}>
-                        Ingat saya
-                    </label>
-                </div>
-
-                <button type="submit" class="btn-login">Login</button>
-            </form>
-
-            <div class="register-link">
-                Belum punya akun? <a href="{{ route('register') }}">Daftar sekarang</a>
+            <div class="form-extras">
+                <label class="remember">
+                    <input type="checkbox" name="remember" value="1" {{ old('remember') ? 'checked' : '' }}>
+                    Ingat saya
+                </label>
             </div>
+
+            <button type="submit" class="btn-login">Login</button>
+        </form>
+
+        <div class="register-link">
+            Belum punya akun? <a href="{{ route('register') }}">Daftar sekarang</a>
         </div>
     </div>
 
