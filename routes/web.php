@@ -36,7 +36,7 @@ Route::post('/logout', [AuthController::class, 'logout'])
     ->middleware('auth')
     ->name('logout');
 
-// / Regular user routes
+/// Regular user routes
 Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard', DashboardController::class)
