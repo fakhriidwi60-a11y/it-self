@@ -1,11 +1,15 @@
-@php $pageTitle = 'Profile'; @endphp
-<x-layout :page-title="$pageTitle" header-title="Profile User">
+@php
+    $pageTitle = 'Profile';
+    $isAdmin = $user->isAdmin();
+    $updateRoute = $isAdmin ? 'admin.profile.update' : 'profile.update';
+@endphp
+<x-layout :page-title="$pageTitle" :header-title="$isAdmin ? 'Profile Admin' : 'Profile User'">
     <div class="card">
         <div class="card-header">
             <h3>Informasi Profile</h3>
         </div>
 
-        <form method="POST" action="{{ route('profile.update') }}" style="max-width: 600px;">
+        <form method="POST" action="{{ route($updateRoute) }}" style="max-width: 600px;">
             @csrf
             @method('PUT')
             <div class="form-group">

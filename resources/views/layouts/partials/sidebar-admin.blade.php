@@ -37,6 +37,11 @@
             </a>
         </li>
         <li>
+            <a href="{{ route('admin.profile') }}" class="{{ request()->routeIs('admin.profile') ? 'active' : '' }}">
+                <i class="fas fa-user"></i> Profile
+            </a>
+        </li>
+        <li>
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
                 <a href="#" onclick="event.preventDefault(); this.closest('form').submit();">
