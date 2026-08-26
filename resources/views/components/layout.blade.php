@@ -39,9 +39,15 @@
         @if (session('error'))
             <div class="alert alert-error">{{ session('error') }}</div>
         @endif
-        @error('email')
-            <div class="alert alert-error">{{ $message }}</div>
-        @enderror
+        @if ($errors->any())
+            <div class="alert alert-error">
+                <ul style="margin:0; padding-left:20px;">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
         {{ $slot }}
     </div>
