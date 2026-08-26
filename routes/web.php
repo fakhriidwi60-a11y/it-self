@@ -79,4 +79,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
 
     Route::get('/reports', [ReportController::class, 'index'])->name('reports.index');
     Route::put('/reports/{report}', [ReportController::class, 'update'])->name('reports.update');
+
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+    Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 });
